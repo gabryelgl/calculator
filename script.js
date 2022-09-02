@@ -54,6 +54,15 @@ function setOperators() {
   })
 }
 
+function result() {
+  if (numValues['length'] == 2) {
+    const result = operations[operationInput](numValues[0], numValues['length'] - 1)
+    numInput = result
+    displayValue.innerHTML = result
+    numValues = []
+  }
+}
+
 // keyboard settings
 function setDisplayContent() {
   const numBtns = document.querySelectorAll('.numbers')
@@ -69,5 +78,6 @@ function setDisplayContent() {
 
 
 // set operations
+result()
 setOperators()
 setDisplayContent()

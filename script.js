@@ -21,8 +21,6 @@ const operationDisplay = {
 }
 // const result = operations[operationInput](a, b)
 
-
-
 // display time settings
 function displayDateTime() {
   setDisplayDateTime()

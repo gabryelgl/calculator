@@ -26,49 +26,49 @@
 }
 
 /* general style */
+html {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 body {
   font-family: 'Noto Sans Math';
   font-size: 2rem;
   color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 /* calculator style */
 .calculator {
-  background-color: #3a3a3a;
+  background-color: #3A3A3A;
   padding: 1rem;
-  box-sizing: border-box;
 }
 
 /* display style */
 .display {
-  height: 10rem;
-  width: 100%;
-
-  display: flex;
-  justify-content: flex-end;
+  height: 8rem;
 }
 
-.clock {
+.display-date-time {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   font-size: 1.5rem;
-  width: 100%;
 }
 
 .display-content {
-  font-size: 5rem;
-  display: inherit;
-  align-self: flex-end;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 100%;
+  font-size: 4rem;
   font-weight: 600;
-}
-
-.display-content>div {
-  padding-right: 1rem;
+  user-select: all;
 }
 
 /* keyboard style */
@@ -76,13 +76,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  align-self: center;
+  margin-top: 2rem;
 }
 
 .buttons {
   display: grid;
-  grid-template-columns: 3fr repeat(2, 1fr);
+  grid-template-columns: 3fr .5fr .5fr;
   gap: .1rem;
+  width: 100%;
 }
 
 .num-box {
@@ -93,27 +94,22 @@ body {
 
 .operators-box {
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: .1rem;
 }
 
 .numbers,
 .operators {
+  background-color: #1B1B1B;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #1b1b1b;
-  padding: 3rem 4rem;
-  border: .2rem solid #1b1b1b;
+  padding: 2rem 3rem;
+  border: 1px solid #1B1B1B;
 }
 
 .numbers:hover,
 .operators:hover {
-  border-color: #fff;
+  border-color: #FFF;
   cursor: pointer;
-}
-
-#btn-equal {
-  display: flex;
-  align-items: flex-end;
 }

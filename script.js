@@ -6,7 +6,6 @@ const keyNum = document.querySelectorAll('.numbers')
 const keyOperators = document.querySelectorAll('.operators')
 const equal = document.querySelector('#btn-equal')
 const ac = document.querySelector('#btn-ac')
-const point = document.querySelector('#btn-point')
 const operatorsSimbols = {
   sum: '+',
   subtract: '-',
@@ -44,9 +43,6 @@ function keySettings() {
     key.addEventListener('click', () => {
       displayContent.innerHTML += operatorsSimbols[operatorsValue]
     })
-  })
-  point.addEventListener('click', () => {
-    displayContent.innerHTML += '.'
   })
   ac.addEventListener('click', () => {
     displayContent.innerHTML = ''

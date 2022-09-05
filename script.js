@@ -1,25 +1,19 @@
 // declarations
 const displayClock = document.querySelector('#currentClock')
 const displayDate = document.querySelector('#currentDate')
-const displayValue = document.querySelector('.display-content')
-let numInput
-let operationInput
-let numValues = []
-const operations = {
-  sum: (a, b) => a + b,
-  subtract: (a, b) => a - b,
-  multiply: (a, b) => a * b,
-  divide: (a, b) => a / b,
-  negative: (a) => a * -1
-}
-const operationDisplay = {
+const displayContent = document.querySelector('.display-content')
+const keyNum = document.querySelectorAll('.numbers')
+const keyOperators = document.querySelectorAll('.operators')
+const equal = document.querySelector('#btn-equal')
+const ac = document.querySelector('#btn-ac')
+const point = document.querySelector('#btn-point')
+const operatorsSimbols = {
   sum: '+',
   subtract: '-',
-  multiply: 'x',
+  multiply: '*',
   divide: '/',
-  point: ','
+  point: '.'
 }
-// const result = operations[operationInput](a, b)
 
 // display time settings
 function displayDateTime() {
@@ -28,7 +22,6 @@ function displayDateTime() {
     setDisplayDateTime()
   }, 1000)
 }
-
 function setDisplayDateTime() {
   const currentTime = new Date()
   const time = currentTime.toLocaleTimeString('pt-BR')
@@ -36,48 +29,30 @@ function setDisplayDateTime() {
   const date = currentTime.toLocaleDateString('pt-BR')
   displayDate.innerHTML = date
 }
-
 displayDateTime()
 
-// operations events
-function setOperators() {
-  const operationBtns = document.querySelectorAll('.operators')
-  operationBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const operationValue = btn.id.replace('btn-', '')
-      operationInput = operationValue.replace('undefined', '')
-      displayValue.innerHTML += operationDisplay[operationInput]
-      numValues.push(Number(numInput))
-      console.log(numValues[numValues['length'] - 1])
-      console.log(operationInput)
+// operations
+function keySettings() {
+  keyNum.forEach(key => {
+    const numValue = key.id.replace('btn-', '')
+    key.addEventListener('click', () => {
+      displayContent.innerHTML += numValue
     })
   })
-}
-
-function result() {
-  if (numValues['length'] == 2) {
-    const result = operations[operationInput](numValues[0], numValues['length'] - 1)
-    numInput = result
-    displayValue.innerHTML = result
-    numValues = []
-  }
-}
-
-// keyboard settings
-function setDisplayContent() {
-  const numBtns = document.querySelectorAll('.numbers')
-  numBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const btnValue = btn.id.replace('btn-', '')
-      numInput += btnValue
-      numInput = numInput.replace('undefined', '')
-      displayValue.innerHTML = numInput
+  keyOperators.forEach(key => {
+    const operatorsValue = key.id.replace('btn-', '')
+    key.addEventListener('click', () => {
+      displayContent.innerHTML += operatorsSimbols[operatorsValue]
     })
   })
+  point.addEventListener('click', () => {
+    displayContent.innerHTML += '.'
+  })
+  ac.addEventListener('click', () => {
+    displayContent.innerHTML = ''
+  })
+  equal.addEventListener('click', () => {
+    displayContent.innerHTML = eval(displayContent.textContent)
+  })
 }
-
-
-// set operations
-result()
-setOperators()
-setDisplayContent()
+keySettings()

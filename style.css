@@ -44,6 +44,7 @@ body {
 
 /* calculator style */
 .calculator {
+  min-width: 419px;
   background-color: #3A3A3A;
   padding: 1rem;
 }
@@ -99,7 +100,8 @@ body {
 }
 
 .numbers,
-.operators {
+.operators,
+.especial-chars {
   background-color: #1B1B1B;
   display: flex;
   align-items: center;
@@ -109,7 +111,8 @@ body {
 }
 
 .numbers:hover,
-.operators:hover {
+.operators:hover,
+.especial-chars:hover {
   border-color: #FFF;
   cursor: pointer;
 }
